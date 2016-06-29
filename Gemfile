@@ -77,7 +77,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-spork'
+#  gem 'guard-spork'
   gem 'database_cleaner'
   gem 'jasmine'
 end
