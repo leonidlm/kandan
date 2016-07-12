@@ -1,0 +1,19 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "kandan-web",
+      "essential": true,
+      "image": "850049707495.dkr.ecr.us-east-1.amazonaws.com/leonidlm/kandan:0.0.4",
+      "memory": 128,
+      "cpu": 1,
+      "command": ["bundle", "exec", "rails", "server", "thin", "-p", "3000", "-e", "production"],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 3000
+        }
+      ]
+    }
+  ]
+}

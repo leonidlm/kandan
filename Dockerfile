@@ -1,6 +1,7 @@
 FROM ruby:1.9.3
 
-RUN apt-get update -qq && apt-get install -y build-essential
+RUN apt-get update -qq && \
+    apt-get install -y build-essential
 
 # for postgres
 RUN apt-get install -y libpq-dev
@@ -22,4 +23,7 @@ ADD Gemfile* $APP_HOME/
 RUN bundle install
 
 ADD . $APP_HOME
+
+RUN bundle exec rake assets:precompile && \
+    rm -rf /app/tmp/pids/server.pid
 
