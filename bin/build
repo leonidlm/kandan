@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+ver="${1:-$(git rev-parse HEAD)}"
+ecr_endpoint="${2:-850049707495.dkr.ecr.us-east-1.amazonaws.com}"
+
+docker build -t leonidlm/kandan:$ver .
+docker tag leonidlm/kandan:$ver $ecr_endpoint/leonidlm/kandan:$ver
+docker push $ecr_endpoint/leonidlm/kandan:$ver
+
+echo "---> New docker image: $ecr_endpoint/leonidlm/kandan:$ver"
+

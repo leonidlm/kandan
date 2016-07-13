@@ -1,5 +1,12 @@
 # Postgres settings
 # #################
+local:
+  adapter: postgresql
+  username: postgres
+  database: kandan_local
+  host: <%= ENV['DB_HOST'] %>
+  port: 5432
+
 development:
   adapter: postgresql
   username: postgres

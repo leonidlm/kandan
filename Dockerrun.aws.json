@@ -4,10 +4,11 @@
     {
       "name": "kandan-web",
       "essential": true,
-      "image": "850049707495.dkr.ecr.us-east-1.amazonaws.com/leonidlm/kandan:0.0.4",
+      "image": "850049707495.dkr.ecr.us-east-1.amazonaws.com/leonidlm/kandan:53c446e77aba8afafb023de672cda225e15c6858",
       "memory": 128,
       "cpu": 1,
-      "command": ["bundle", "exec", "rails", "server", "thin", "-p", "3000", "-e", "production"],
+      "entrypoint": ["/bin/bash", "-c"],
+      "command": ["bundle", "exec", "rails", "server", "thin", "-p", "3000", "-e", "$RAILS_ENV"],
       "portMappings": [
         {
           "hostPort": 80,

@@ -19,10 +19,13 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD Gemfile* $APP_HOME/
-RUN bundle install
-
+# ADD Gemfile* $APP_HOME/
+# To speed up gems installation, run `bundle package --all` locally and then
+# uncommend the following line:
 ADD . $APP_HOME
+RUN bundle install --retry 3 --jobs 3
+
+#ADD . $APP_HOME
 
 RUN bundle exec rake assets:precompile && \
     rm -rf /app/tmp/pids/server.pid
